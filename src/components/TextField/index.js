@@ -2,12 +2,12 @@ import './index.css';
 
 
 const TextField = (props) => {
-  const { label, placeholder } = props;
+  const { label, placeholder, required } = props;
 
   return (
     <div className="field">
       <label>{label}</label>
-      <input placeholder={placeholder}/>
+      <input required={required} placeholder={placeholder}/>
     </div>
   );
 };
