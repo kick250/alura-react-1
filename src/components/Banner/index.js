@@ -1,10 +1,12 @@
-import banner from './images/banner.png'
+import './index.css'
 
 
 function Banner() {
-    return (
-        <img src={banner} />
-    )
+	return (
+		<header className="banner">
+			<img src='/images/banner.png' alt='banner da pagina'/>
+		</header>
+	)
 };
 
 
