@@ -6,6 +6,16 @@ import SubmitButton from '../SubmitButton';
 
 
 class TeacherForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      office: '',
+      imageLink: '',
+      team: ''
+    };
+  }
 
   render() {
     const teams = [
@@ -17,21 +27,48 @@ class TeacherForm extends React.Component {
 
     return (
       <section className='teacher-form'>
-        <form onSubmit={this.addTeacher}>
+        <form onSubmit={event => this.addTeacher(event)}>
           <h2>Preencha os dados do colaborador</h2>
-          <TextField required={true} label='Nome' placeholder='Digite o nome' />
-          <TextField required={true} label='Cargo' placeholder='Digite o cargo' />
-          <TextField required={true} label='Imagem' placeholder='Digite o link da imagem' />
-          <DropdownList required={true} label='Time' options={teams}/>
+          <TextField value={this.state.name} required={true} change={event => this.setName(event)} label='Nome' placeholder='Digite o nome' />
+          <TextField value={this.state.office} required={true} change={event => this.setOffice(event)} label='Cargo' placeholder='Digite o cargo' />
+          <TextField value={this.state.imageLink} required={true} change={event => this.setImageLink(event)} label='Imagem' placeholder='Digite o link da imagem' />
+          <DropdownList value={this.state.team} required={true} change={event => this.setTeam(event)} label='Time' options={teams}/>
           <SubmitButton>Criar card</SubmitButton>
         </form>
       </section>
     )
   }
 
+  setName(event) {
+    const name = event.target.value;
+    this.setState({name})
+  }
+
+  setOffice(event) {
+    const office = event.target.value;
+    this.setState({office})
+  }
+
+  setImageLink(event) {
+    const imageLink = event.target.value;
+    this.setState({imageLink})
+  }
+
+  setTeam(event) {
+    const team = event.target.value;
+    this.setState({team})
+  }
+
   addTeacher(event) {
     event.preventDefault();
-    console.log(event);
+
+    const teacher = {
+      name: this.state.name,
+      office: this.state.office,
+      imageLink: this.state.imageLink,
+      team: this.state.team,
+    }
+    this.props.onSave(teacher);
   }
 
 }
