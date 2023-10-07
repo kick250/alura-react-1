@@ -18,13 +18,6 @@ class TeacherForm extends React.Component {
   }
 
   render() {
-    const teams = [
-      "Programação",
-      "Front-end",
-      "Back-end",
-      "Design",
-    ]
-
     return (
       <section className='teacher-form'>
         <form onSubmit={event => this.addTeacher(event)}>
@@ -32,11 +25,17 @@ class TeacherForm extends React.Component {
           <TextField value={this.state.name} required={true} change={event => this.setName(event)} label='Nome' placeholder='Digite o nome' />
           <TextField value={this.state.office} required={true} change={event => this.setOffice(event)} label='Cargo' placeholder='Digite o cargo' />
           <TextField value={this.state.imageLink} required={true} change={event => this.setImageLink(event)} label='Imagem' placeholder='Digite o link da imagem' />
-          <DropdownList value={this.state.team} required={true} change={event => this.setTeam(event)} label='Time' options={teams}/>
+          <DropdownList value={this.state.team} required={true} change={event => this.setTeam(event)} label='Time' options={this.teamNames()}/>
           <SubmitButton>Criar card</SubmitButton>
         </form>
       </section>
     )
+  }
+
+  teamNames() {
+    const teams = this.props.teams ? this.props.teams : []
+
+    return teams.map(team => team.name)
   }
 
   setName(event) {
