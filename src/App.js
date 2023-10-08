@@ -5,6 +5,19 @@ import TeamView from './components/TeamView';
 
 
 function App() {
+  function addTeacher(teacher) {
+    setTeachers([...teachers, teacher]);
+  }
+
+  function getTeachersFrom(team) {
+    return teachers.filter(teacher => teacher.team === team.name);
+  }
+
+  function renderTeams() {
+    return teams.map(team => <TeamView team={team} key={team.id} teachers={getTeachersFrom(team)} /> )
+  }
+
+
   const teams = [
     { id: '1', name: "Programação", primaryColor: '#57C278', secondaryColor: '#D9F7E9'},
     { id: '2', name: "Front-end", primaryColor: '#82CFFA', secondaryColor: '#E8FBFF'},
@@ -13,15 +26,6 @@ function App() {
   ]
 
   const [teachers, setTeachers] = useState([]);
-
-  function addTeacher(teacher) {
-    setTeachers([...teachers, teacher]);
-    console.log(teachers)
-  }
-
-  function renderTeams() {
-    return teams.map(team => <TeamView team={team} key={team.id} /> )
-  }
 
   return (
     <div className="App">

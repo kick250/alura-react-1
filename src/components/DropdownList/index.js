@@ -10,7 +10,7 @@ class DropdownList extends React.Component {
     return (
       <div className='select-field'>
         <label>{label}</label>
-        <select onChange={this.props.change} defaultValue={value} required={required}>
+        <select value={value} onChange={this.props.change} defaultValue={value} required={required}>
           <option value={''} disabled={true} >Selecione o valor</option>
           {
             options.map(option =>

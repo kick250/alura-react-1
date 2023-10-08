@@ -68,6 +68,16 @@ class TeacherForm extends React.Component {
       team: this.state.team,
     }
     this.props.onSave(teacher);
+    this.clearFields();
+  }
+
+  clearFields() {
+    this.setState({
+      name: '',
+      office: '',
+      imageLink: '',
+      team: ''
+    });
   }
 
 }
