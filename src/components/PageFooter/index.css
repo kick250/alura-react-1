@@ -1,0 +1,19 @@
+.page-footer {
+  background-color: #6278F7;
+  display: flex;
+  justify-content: space-around;
+  padding: 38px;
+  color: white;
+}
+
+.page-footer .social {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+}
+
+.social img {
+  width: 30px;
+  height: 30px;
+}

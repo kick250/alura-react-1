@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './components/Banner';
 import TeacherForm from './components/TeacherForm';
 import TeamView from './components/TeamView';
+import PageFooter from './components/PageFooter';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Banner />
       <TeacherForm onSave={addTeacher} teams={teams}/>
       {renderTeams()}
+      <PageFooter />
     </div>
   );
 }
